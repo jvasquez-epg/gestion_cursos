@@ -1,0 +1,299 @@
+/*──────────────────────────────────────
+  Estilos personalizados para perfil
+──────────────────────────────────────*/
+
+.dashboard-main .card {
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(255, 255, 255, 0.95) 100%);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg), 0 0 0 1px var(--color-border-light);
+  padding: 3rem;
+  margin: 2rem auto;
+  max-width: 500px;
+  position: relative;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-border-light);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s;
+  overflow: hidden;
+}
+
+.dashboard-main .card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary));
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%,100% { background-position: -200% 0; }
+  50%    { background-position: 200% 0;  }
+}
+
+.dashboard-main .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(42, 92, 118, 0.15), 0 0 0 1px var(--color-primary);
+}
+
+.dashboard-main .card h2 {
+  position: relative;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-primary-dark);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.dashboard-main .card h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: 2px;
+}
+
+.dashboard-main .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-main .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  transition: color 0.3s;
+}
+
+.dashboard-main .form-group p {
+  background: var(--color-accent-light);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-accent-light);
+  margin: 0;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.dashboard-main .input-full {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-border);
+  font-size: 1rem;
+  background: var(--card-bg);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-primary);
+}
+
+.dashboard-main .input-full:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(42, 92, 118, 0.1), var(--shadow-md);
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.dashboard-main .input-full:hover:not(:focus) {
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Validación nativa */
+.dashboard-main .input-full:invalid {
+  border-color: var(--color-danger);
+}
+.dashboard-main .input-full:valid {
+  border-color: var(--success-color);
+}
+
+/* Botones */
+.dashboard-main .btn-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-light-text);
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 1rem 2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(42, 92, 118, 0.3);
+  position: relative;
+}
+
+.dashboard-main .btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.dashboard-main .btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-secondary) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(42, 92, 118, 0.4);
+}
+
+.dashboard-main .btn-primary:hover::before {
+  left: 100%;
+}
+
+.dashboard-main .btn-primary:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(42, 92, 118, 0.3);
+}
+
+.dashboard-main .btn-secondary {
+  display: inline-block;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, var(--color-gray-light) 0%, var(--color-gray-hover) 100%);
+  color: var(--text-primary);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  border: 2px solid var(--color-border-light);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+}
+
+.dashboard-main .btn-secondary:hover {
+  background: linear-gradient(135deg, var(--color-gray-hover) 0%, var(--color-border-light) 100%);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+/* Animación de entrada */
+.dashboard-main .card {
+  animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0);  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-main .card {
+    margin: 1rem;
+    padding: 2rem 1.5rem;
+    border-radius: 1.5rem;
+  }
+  .dashboard-main .card h2 {
+    font-size: 1.75rem;
+  }
+}
+/* ────────────── Estilos generales para inputs ────────────── */
+.dashboard-main input[type="text"],
+.dashboard-main input[type="email"],
+.dashboard-main input[type="password"],
+.dashboard-main .input-full {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  backdrop-filter: blur(5px);
+  font-size: 1rem;
+  color: var(--text-primary);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  outline: none;
+}
+
+/* Hover y focus */
+.dashboard-main input[type="text"]:hover,
+.dashboard-main input[type="email"]:hover,
+.dashboard-main input[type="password"]:hover,
+.dashboard-main .input-full:hover {
+  border-color: var(--color-primary-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.dashboard-main input[type="text"]:focus,
+.dashboard-main input[type="email"]:focus,
+.dashboard-main input[type="password"]:focus,
+.dashboard-main .input-full:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(42, 92, 118, 0.1), var(--shadow-md);
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+/* Estados de validación */
+.dashboard-main input:invalid {
+  border-color: var(--color-danger);
+}
+
+.dashboard-main input:valid {
+  border-color: var(--success-color);
+}
+
+/* Placeholder styling */
+.dashboard-main input::placeholder {
+  color: #999;
+  opacity: 1;
+  transition: color 0.2s ease;
+}
+
+.dashboard-main input:focus::placeholder {
+  color: transparent;
+}
+/* ───────────── Estilo especial para "Cambiar contraseña" ───────────── */
+.dashboard-main .btn-secondary {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s, background 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+/* Línea animada al pasar el ratón */
+.dashboard-main .btn-secondary::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-acent));
+  transition: left 0.4s ease;
+}
+
+/* Hover: fondo y animación de línea */
+.dashboard-main .btn-secondary:hover {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  box-shadow: 0 8px 25px rgba(42, 92, 118, 0.2);
+  transform: translateY(-2px);
+}
+
+.dashboard-main .btn-secondary:hover::before {
+  left: 0;
+}
+
+/* Active: efecto “hundido” */
+.dashboard-main .btn-secondary:active {
+  background: var(--color-primary-dark);
+  box-shadow: 0 4px 15px rgba(42, 92, 118, 0.3);
+  transform: translateY(0);
+}

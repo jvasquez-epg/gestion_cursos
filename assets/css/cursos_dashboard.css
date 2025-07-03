@@ -1,0 +1,471 @@
+/* ================== Tarjetas, resumen y controles ================== */
+
+.top-bar {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+  color: var(--color-light-text);
+}
+
+.summary {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.summary span {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.95rem;
+  min-width: 180px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.summary span:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+.summary strong {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#buscador {
+  flex: 1;
+  min-width: 300px;
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--border-color);
+  border-radius: 50px;
+  background: var(--card-bg);
+  font-size: 1rem;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+#buscador:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(42, 92, 118, 0.1);
+  background: var(--color-white);
+}
+#buscador::placeholder {
+  color: var(--color-muted-text);
+}
+
+/* ================== Grid de tarjetas ================== */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.course-card {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+  background: #fff;
+  padding: 20px 26px 18px 26px;
+  transition: box-shadow 0.23s;
+  position: relative;
+  overflow: hidden;
+}
+.course-card.selected {
+  border-color: #4f46e5;
+  box-shadow: var(--shadow-hover);
+}
+.course-card.disabled {
+  opacity: 0.55;
+  pointer-events: none;
+  background: var(--color-gray-light);
+  border-color: var(--color-border-light);
+}
+.course-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.course-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.course-card .info-tag {
+  background: #f1f5f9;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-right: 6px;
+  padding: 4px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.course-card .info-tag i {
+  margin-right: 3px;
+}
+
+.course-card .btn-solicitar {
+  margin-top: 10px;
+  padding: 10px 28px;
+  background: linear-gradient(90deg, #6366f1 30%, #06b6d4 100%);
+  color: #fff;
+  border: none;
+  border-radius: 18px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, box-shadow 0.2s;
+  box-shadow: 0 2px 10px rgba(67, 56, 202, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.course-card .btn-solicitar:disabled {
+  background: #def2ff;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* ================== Checkbox estilo Lucide ================== */
+.course-checkbox {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  border: 2px solid #00ff37;
+  transition: border 0.2s;
+  background: #fff;
+  margin-left: 8px;
+  cursor: pointer;
+  color: #cbd5e1;
+}
+
+.course-card.selected .course-checkbox,
+.course-checkbox.checked {
+  border: 2.2px solid #4f46e5;
+  background: #00ff6e;
+  color: #4f46e5;
+}
+.course-checkbox svg {
+  display: none;
+}
+.course-checkbox.checked svg {
+  display: inline;
+}
+.course-checkbox:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.course-card.disabled .course-checkbox {
+  border-color: #d1d5db;
+  background: #f3f4f6;
+  cursor: not-allowed;
+}
+
+/* ================== Selección flotante ================== */
+.floating-elements {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  z-index: 1000;
+  pointer-events: none;
+  max-width: calc(100vw - 48px);
+}
+.floating-elements > .visible {
+  pointer-events: auto;
+}
+.selection-summary {
+  background: #fff;
+  border: 1.5px solid #e4e7ed;
+  border-radius: 16px;
+  padding: 16px 24px;
+  box-shadow: 0 4px 24px rgba(34, 50, 84, 0.09);
+  min-width: 220px;
+  font-size: 15px;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s var(--transition);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.selection-summary.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.selection-summary .summary-text {
+  color: #334155;
+  font-weight: 500;
+}
+.selection-summary .summary-text strong {
+  color: #4f46e5;
+  font-size: 18px;
+}
+.selection-summary .limit-warning {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f8fafc;
+  border: 1px solid #facc15;
+  border-radius: 8px;
+  color: #ca8a04;
+  font-size: 13px;
+  padding: 8px 12px;
+  display: none;
+}
+.selection-summary .limit-warning.visible {
+  display: flex;
+}
+
+/* ================== Botón Solicitar Seleccionados ================== */
+.btn-solicitar-seleccionados {
+  background: linear-gradient(135deg, #4f46e5 0%, #22d3ee 100%);
+  color: white;
+  border: none;
+  padding: 16px 36px;
+  border-radius: 24px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(79, 70, 229, 0.18);
+  transition: all 0.25s var(--transition-fast);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-solicitar-seleccionados.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.btn-solicitar-seleccionados:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================== Mensaje Sin Cursos ================== */
+.no-cursos {
+  color: #64748b;
+  padding: 38px 0;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.no-cursos i {
+  opacity: 0.2;
+}
+
+
+
+/* ================== Responsive ================== */
+@media (max-width: 900px) {
+  .floating-elements {
+    left: 8px;
+    right: 8px;
+  }
+  .selection-summary,
+  .btn-solicitar-seleccionados {
+    min-width: 120px;
+    font-size: 15px;
+  }
+  .dashboard-main {
+    padding-bottom: 110px;
+  }
+}
+@media (max-width: 768px) {
+  .dashboard-main {
+    padding: 1rem;
+  }
+  .top-bar {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .summary {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .summary span {
+    min-width: auto;
+  }
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  #buscador {
+    min-width: auto;
+  }
+  .selection-summary {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    max-width: none;
+  }
+  .course-card {
+    padding: 1.25rem;
+  }
+}
+@media (max-width: 480px) {
+  .top-bar {
+    padding: 1rem;
+  }
+  .course-card {
+    padding: 1rem;
+  }
+  .course-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .summary span {
+    padding: 0.75rem 1rem;
+  }
+}
+.dashboard-main {
+  padding-bottom: 128px;
+}
+
+/* ================== Animaciones ================== */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================== Accesibilidad ================== */
+.btn-solicitar:focus-visible,
+.btn-solicitar-seleccionados:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ================== Modo oscuro ================== */
+@media (prefers-color-scheme: dark) {
+  .course-card {
+    background: var(--color-dark-bg);
+    border-color: var(--color-dark-bg-hover);
+    color: var(--color-light-text);
+  }
+  .course-card h3 {
+    color: var(--color-light-text);
+  }
+  .info-tag {
+    background: var(--color-dark-bg-hover);
+    color: var(--color-dark-text);
+    border-color: transparent;
+  }
+  .no-cursos {
+    background: var(--color-background);
+    color: var(--color-muted-text);
+  }
+  .selection-summary {
+    background: var(--color-dark-bg);
+    color: var(--color-light-text);
+  }
+  .selection-summary .summary-text {
+    color: #ffffff;
+    font-weight: 500;
+  }
+.course-card.disabled h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+  flex: 1;
+}
+
+  .course-card .btn-solicitar:disabled {
+    background: #7c7c7c;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+/* Responsive – estilo cuadrado y flotante en móviles */
+@media (max-width: 576px) {
+  .summary {
+    justify-content: center;
+  }
+
+  .summary span {
+    flex: 0 0 calc(50% - 1rem); /* 2 por fila */
+    min-width: auto;
+    max-width: 180px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

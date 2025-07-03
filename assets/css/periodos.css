@@ -1,0 +1,87 @@
+/* ==============================
+   Botones de tabla (periodos)
+   ============================== */
+.btn-table-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn-table-action i {
+  font-size: 1rem;
+}
+
+.btn-table-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Colores para cada tipo de acción */
+.btn-table-download { background: linear-gradient(135deg, #117a8b, #17a2b8); }
+.btn-table-export   { background: linear-gradient(135deg, #117a8b, #17a2b8); }
+.btn-table-edit     { background: linear-gradient(135deg, #d39e00, #ffc107); }
+.btn-table-delete   { background: linear-gradient(135deg, #bd2130, #dc3545); }
+
+.btn-table-action {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.btn-table-action i {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+.btn-table-action:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.data-table {
+  animation: fadeInUp 0.4s ease-out both;
+}
+/* Botón de acción general (crear, editar) */
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #2193b0, #6dd5ed);
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.btn-action i {
+  font-size: 1rem;
+}
+
+.btn-action:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* Color personalizado para botón de edición o creación */
+.btn-edit {
+  background: linear-gradient(90deg, #ff9800, #ffc107);
+}
+.btn-edit:hover {
+  background: linear-gradient(90deg, #f57c00, #ffb300);
+}

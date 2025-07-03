@@ -1,0 +1,145 @@
+body {
+    margin: 0; padding: 0; height: 100vh;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f8faf9;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 16px;
+}
+
+.login-container {
+    width: 100vw; height: 100vh; display: flex;
+}
+
+.login-left {
+    width: 500px; min-width: 320px; max-width: 600px;
+    background: #f9faf9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 120px 42px 0 42px; /* GRAN ESPACIO ARRIBA */
+    z-index: 2;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.facultad-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 44px;      /* MÁS SEPARACIÓN CON TÍTULO */
+    width: 100%;
+}
+
+.logo-unap {
+    width: 54px; min-width: 54px;
+    height: 54px;
+    object-fit: contain;
+    margin-top: 2px;
+}
+
+.facultad-text {
+    font-size: 1.18rem;
+    font-weight: 600;
+    color: #232b38;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    letter-spacing: 0.1px;
+    line-height: 1.15;
+    width: 100%;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.login-title {
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-size: 1.35rem;
+    font-weight: bold;
+    margin-bottom: 50px;     /* MÁS SEPARACIÓN CON EL FORM */
+    margin-top: 0;
+    letter-spacing: 0.3px;
+    color: #232b38;
+    line-height: 1.2;
+    width: 100%;
+    text-align: left;
+    word-break: break-word;
+}
+
+.login-form {
+    width: 100%;
+    display: flex; flex-direction: column; gap: 32px; /* MÁS SEPARACIÓN ENTRE CAMPOS */
+    align-items: stretch;
+}
+
+.login-input,
+.login-button {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.login-input {
+    padding: 15px 18px;
+    border-radius: 8px;
+    border: none;
+    background: #ffe7d2;
+    font-size: 0.8rem;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #232b38;
+    outline: none;
+    transition: box-shadow 0.2s;
+}
+.login-input:focus {
+    box-shadow: 0 0 0 2px #f29226; background: #fff6ef;
+}
+
+.login-button {
+    padding: 15px 0;
+    border-radius: 15px;
+    background: #232b38;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.22px;
+    transition: background 0.2s;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+.login-button:hover {
+    background: #444a56;
+}
+
+.login-right {
+    flex: 1;
+    background: url('../img/estudiante-login.jpg') center center no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+/* Error message, opcional */
+.login-error {
+    color: #b71c1c;
+    background: #ffeaea;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.09px;
+}
+
+@media (max-width: 900px) {
+    .login-container { flex-direction: column; }
+    .login-left, .login-right {
+        width: 100vw; min-width: 0; max-width: none; height: 50vh; padding: 24px 12px 0 12px;
+    }
+    .login-right { 
+        height: 0; 
+        min-height: 0; 
+        padding: 0; 
+        display: none; /* <-- OCULTA la imagen en mobile/tablet */
+    }
+    .facultad-header { justify-content: center; }
+    .login-left { align-items: center; }
+    .login-form { width: 95%; }
+}
+
