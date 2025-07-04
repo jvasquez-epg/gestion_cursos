@@ -17,12 +17,12 @@ class UsuarioModel
      */
     public function contarPorRoles(): array
     {
-        $stmt = $this->pdo->query("
-            SELECT r.nombre AS rol, COUNT(u.id) AS cantidad
-            FROM usuarios u
-            JOIN roles r ON u.rol_id = r.id
-            GROUP BY r.nombre
-        ");
+        $stmt = $this->pdo->query(
+            "SELECT r.nombre AS rol, COUNT(u.id) AS cantidad
+             FROM usuarios u
+             JOIN roles r ON u.rol_id = r.id
+             GROUP BY r.nombre"
+        );
         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Inicializar conteo solo para roles esperados
@@ -50,13 +50,13 @@ class UsuarioModel
      */
     public function getByRolNombre(string $rol): array
     {
-        $stmt = $this->pdo->prepare("
-            SELECT u.*
+        $stmt = $this->pdo->prepare(
+            "SELECT u.*
               FROM usuarios u
               JOIN roles r ON u.rol_id = r.id
              WHERE r.nombre = ?
-             ORDER BY u.apellido_paterno, u.apellido_materno, u.nombres
-        ");
+             ORDER BY u.apellido_paterno, u.apellido_materno, u.nombres"
+        );
         $stmt->execute([$rol]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -81,12 +81,12 @@ class UsuarioModel
      */
     public function crear(array $data): void
     {
-        $stmt = $this->pdo->prepare("
-            INSERT INTO usuarios 
+        $stmt = $this->pdo->prepare(
+            "INSERT INTO usuarios
               (nombres, apellido_paterno, apellido_materno,
                dni, correo, telefono, usuario, `contraseña`, rol_id)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ");
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+        );
         $stmt->execute([
             trim($data['nombres']),
             trim($data['apellido_paterno']),
@@ -213,75 +213,6 @@ class UsuarioModel
     }
 
     /**
-     * Recupera todos los permisos definidos en el sistema.
-     *
-     * @return array<array>
-     */
-    public function getAllPermisos(): array
-    {
-        $stmt = $this->pdo->query("SELECT id, nombre FROM permisos ORDER BY nombre");
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    /**
-     * Recupera los IDs de permisos asignados a un usuario.
-     *
-     * @param int $usuarioId
-     * @return int[]
-     */
-    public function getPermisosPorUsuario(int $usuarioId): array
-    {
-        $stmt = $this->pdo->prepare("
-            SELECT permiso_id
-              FROM usuario_permiso
-             WHERE usuario_id = ?
-        ");
-        $stmt->execute([$usuarioId]);
-        return array_column($stmt->fetchAll(PDO::FETCH_ASSOC), 'permiso_id');
-    }
-
-    /**
-     * Asigna un conjunto de permisos a un usuario (reemplaza los previos).
-     *
-     * @param int   $usuarioId
-     * @param int[] $permisos
-     */
-    public function asignarPermisosUsuario(int $usuarioId, array $permisos): void
-    {
-        // Borrar asignaciones actuales
-        $this->pdo
-            ->prepare("DELETE FROM usuario_permiso WHERE usuario_id = ?")
-            ->execute([$usuarioId]);
-
-        // Insertar cada nuevo permiso
-        $stmt = $this->pdo->prepare("
-            INSERT INTO usuario_permiso (usuario_id, permiso_id)
-            VALUES (?, ?)
-        ");
-        foreach ($permisos as $pid) {
-            $stmt->execute([$usuarioId, $pid]);
-        }
-    }
-
-    /**
-     * Alias para compatibilidad con login.php
-     *
-     * @param int $usuarioId
-     * @return string[]
-     */
-    public function getPermisosByUsuarioId(int $usuarioId): array
-    {
-        $stmt = $this->pdo->prepare("
-            SELECT p.nombre
-              FROM permisos p
-              JOIN usuario_permiso up ON up.permiso_id = p.id
-             WHERE up.usuario_id = ?
-        ");
-        $stmt->execute([$usuarioId]);
-        return $stmt->fetchAll(PDO::FETCH_COLUMN);
-    }
-
-    /**
      * Devuelve el último ID auto-increment insertado.
      *
      * @return int
@@ -290,19 +221,4 @@ class UsuarioModel
     {
         return (int) $this->pdo->lastInsertId();
     }
-
-    // al final de admin/models/UsuarioModel.php
-    public function getPermisosNombresPorUsuario(int $usuarioId): array
-    {
-        $stmt = $this->pdo->prepare("
-        SELECT p.nombre
-        FROM permisos p
-        JOIN usuario_permiso up ON p.id = up.permiso_id
-        WHERE up.usuario_id = ?
-        ORDER BY p.nombre
-    ");
-        $stmt->execute([$usuarioId]);
-        return array_column($stmt->fetchAll(PDO::FETCH_ASSOC), 'nombre');
-    }
-
 }

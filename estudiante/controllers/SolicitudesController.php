@@ -76,9 +76,10 @@ class SolicitudesController
 
         // Traemos también código U, código curso y nombre
         $row = $this->solicitudModel->filaConDocumento($id, $estudiante);
-        if(!$row){
+        if (!$row) {
             http_response_code(404);
-            echo 'Documento no encontrado.'; return;
+            echo 'Documento no encontrado.';
+            return;
         }
 
         /* ─── construir nombre amigable ─── */
@@ -99,7 +100,7 @@ class SolicitudesController
     /*────────────────────────────────────────────
      * Eliminar solicitud (solo si está permitido)
      *───────────────────────────────────────────*/
-  public function eliminar(): void
+    public function eliminar(): void
     {
         header('Content-Type: application/json');
 
@@ -150,7 +151,7 @@ class SolicitudesController
         $zip->close();
 
         header('Content-Type: application/zip');
-        header('Content-Disposition: attachment; filename="solicitudes_periodo_'.$periodoId.'.zip"');
+        header('Content-Disposition: attachment; filename="solicitudes_periodo_' . $periodoId . '.zip"');
         readfile($tmp);
         unlink($tmp);
     }
@@ -161,15 +162,39 @@ class SolicitudesController
     public function descargarResolucion(): void
     {
         $periodoId = (int) ($_GET['periodo_id'] ?? 0);
-        $docBin = $this->periodoModel->getResolucion($periodoId);
-        if (!$docBin) {
-            http_response_code(404);
-            echo 'Resolución no encontrada.';
-            return;
+
+        $datosPeriodo = $this->periodoModel->getPeriodoConEstado($periodoId);
+        if (!$datosPeriodo) {
+            header("Location: solicitudes.php?error_resolucion=1&anio=XXXX&per=X");
+            exit;
+        }
+
+        $anio    = $datosPeriodo['anio'];
+        $periodo = $datosPeriodo['periodo'];
+        $estado  = $datosPeriodo['estado'];
+
+        if ($estado !== 'cerrado') {
+            $anioEnc = urlencode((string)$anio);
+            $perEnc  = urlencode((string)$periodo);
+            header("Location: solicitudes.php?error_resolucion=1&anio={$anioEnc}&per={$perEnc}");
+            exit;
+        }
+
+        // Ruta del archivo físico
+        $filename = "resolucion_{$anio}_{$periodo}.pdf";
+        $ruta     = __DIR__ . "/../../uploads/resoluciones/" . $filename;
+
+        if (!file_exists($ruta)) {
+            $anioEnc = urlencode((string)$anio);
+            $perEnc  = urlencode((string)$periodo);
+            header("Location: solicitudes.php?error_resolucion=1&anio={$anioEnc}&per={$perEnc}");
+            exit;
         }
 
         header('Content-Type: application/pdf');
-        header('Content-Disposition: attachment; filename="resolucion_'.$periodoId.'.pdf"');
-        echo $docBin;
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Content-Length: ' . filesize($ruta));
+        readfile($ruta);
+        exit;
     }
 }

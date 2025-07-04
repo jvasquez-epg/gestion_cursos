@@ -1,0 +1,99 @@
+
+/* Estructura de la grilla de tiles */
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Estilo común de cada tile */
+.tile {
+  padding: 1.5rem 1rem;
+  border-radius: 16px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform .2s, box-shadow .2s;
+}
+.tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Colores según tipo */
+.tile.green {
+  background-color: #2ecc71; /* verde resoluciones */
+}
+.tile.blue {
+  background-color: #3498db; /* azul reportes */
+}
+
+/* Título dentro del tile */
+.tile h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Botones dentro de los tiles */
+.btn-sm,
+.btn-download {
+  display: inline-block;
+  margin: 0.25rem;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background .2s;
+}
+.btn-sm {
+  background: rgba(255,255,255,0.3);
+  color: #fff;
+}
+.btn-sm:hover {
+  background: rgba(255,255,255,0.5);
+}
+.btn-download {
+  background: rgba(0,0,0,0.15);
+  color: #fff;
+}
+.btn-download:hover {
+  background: rgba(0,0,0,0.25);
+}
+
+/* Título de la página */
+.page-title {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Formulario de filtro */
+.filter-form {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.filter-form label {
+  font-weight: 500;
+  color: #333;
+}
+.select-periodo {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+/* Ajuste responsive menor ancho */
+@media (max-width: 480px) {
+  .filter-form {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .btn-sm, .btn-download {
+    width: 100%;
+    text-align: center;
+  }
+}

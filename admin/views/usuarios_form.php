@@ -274,26 +274,6 @@ if (!isset($_SESSION['csrf_token'])) {
                     <span class="field-error" id="contraseña-error"></span>
                 </div>
 
-                <!-- ——— SECCIÓN: Permisos ——— -->
-                <div class="form-group">
-                    <label>Permisos</label>
-                    <?php if (empty($permisos)): ?>
-                        <p>No hay permisos definidos en el sistema.</p>
-                    <?php else: ?>
-                        <div class="permiso-list">
-                            <?php foreach ($permisos as $perm): ?>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="permisos[]" value="<?= $perm['id'] ?>"
-                                            <?= in_array($perm['id'], $usuarioPermisos ?? []) ? 'checked' : '' ?>>
-                                        <?= htmlspecialchars($perm['nombre']) ?>
-                                    </label>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-
                 <div class="form-actions">
                     <button class="btn" type="submit" id="submitBtn">
                         <span class="spinner"></span>

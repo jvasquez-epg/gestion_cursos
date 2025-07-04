@@ -97,17 +97,10 @@ if (session_status() === PHP_SESSION_NONE) {
                 </a>
             </div>
             <div class="card-user">
-                <div class="num"><?= $cuentas['administrativo'] ?? 0 ?></div>
-                <div class="rol">Administrativos</div>
-                <a class="btn-user-manage" href="<?= BASE_URL ?>admin/usuarios.php?action=list&rol=administrativo">
-                    Gestionar
-                </a>
-            </div>
-            <div class="card-user">
                 <div class="num"><?= $cuentas['estudiante'] ?? 0 ?></div>
                 <div class="rol">Estudiantes</div>
                 <a class="btn-user-manage" href="<?= BASE_URL ?>admin/usuarios.php?action=list&rol=estudiante">
-                    Gestionar
+                    Ver
                 </a>
             </div>
         </div>

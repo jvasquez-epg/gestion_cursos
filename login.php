@@ -46,47 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Instanciamos el modelo para permisos
         $usuarioModel = new UsuarioModel($pdo);
 
-        if ($user['rol_nombre'] === 'administrador') {
-            // El administrador tiene TODOS los permisos
-            $todos = $usuarioModel->getAllPermisos();           // retorna [ ['id'=>..,'nombre'=>..], ... ]
-            $_SESSION['permisos'] = array_column($todos, 'nombre');
-        }
-        elseif ($user['rol_nombre'] === 'administrativo') {
-            // El administrativo solo los permisos asignados
-            $permisosNombres = $usuarioModel->getPermisosPorUsuario($user['id']);
-            // getPermisosPorUsuario devuelve [id, ...], pero queremos nombres:
-            $stmt2 = $pdo->prepare("
-                SELECT p.nombre 
-                FROM permisos p 
-                WHERE p.id IN (" . implode(',', array_map('intval', $permisosNombres)) . ")
-                ORDER BY p.nombre
-            ");
-            $stmt2->execute();
-            $_SESSION['permisos'] = $stmt2->fetchAll(PDO::FETCH_COLUMN);
-        }
-        // (no necesitamos permisos para estudiantes)
-
         // Redirección según rol y permisos
         if ($user['rol_nombre'] === 'administrador') {
-            header("Location: " . BASE_URL . "admin/periodos.php");
-            exit;
-        }
-        if ($user['rol_nombre'] === 'administrativo') {
-            // Mapeo permiso => URL
-            $rutas = [
-                'periodos'         => BASE_URL . 'admin/periodos.php',
-                'solicitudes'      => BASE_URL . 'admin/solicitudes.php',
-                'asignar_docente'  => BASE_URL . 'admin/asignaciones.php',
-                'planilla_docente' => BASE_URL . 'admin/docentes.php',
-            ];
-            // Redirigir al primer permiso que coincida
-            foreach ($_SESSION['permisos'] as $perm) {
-                if (isset($rutas[$perm])) {
-                    header("Location: " . $rutas[$perm]);
-                    exit;
-                }
-            }
-            // Si no tiene ninguno (caso raro), al dashboard de periodos
             header("Location: " . BASE_URL . "admin/periodos.php");
             exit;
         }

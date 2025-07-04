@@ -13,8 +13,102 @@
   <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/main.css">
   <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/palette.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <style>
-    .wrapper {
+    /* --- Unificación visual de botones de acción --- */
+    .btn-table-action {
+      display: inline-flex;
+      align-items: center;
+      gap: .4em;
+      padding: .4em .9em;
+      font-size: .93em;
+      background: #f8f9fa;
+      border: 1px solid #ced4da;
+      color: #222;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background .2s, box-shadow .2s;
+      cursor: pointer;
+      margin-right: .3em;
+      outline: none;
+      vertical-align: middle;
+    }
+
+    .btn-table-action i {
+      font-size: 1em;
+    }
+
+    .btn-table-action:disabled,
+    .btn-table-action[disabled] {
+      opacity: .55;
+      cursor: not-allowed !important;
+      pointer-events: none;
+    }
+
+    .btn-table-action:hover:not(:disabled) {
+      background: #e2e6ea;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    }
+
+    .btn-table-delete {
+      background: #dc3545;
+      color: #fff;
+      border-color: #dc3545;
+    }
+
+    .btn-table-delete:hover {
+      background: #b52a37;
+    }
+
+    .btn-table-view {
+      background: #6c757d;
+      color: #fff;
+      border-color: #6c757d;
+    }
+
+    .btn-table-view:hover {
+      background: #565e64;
+    }
+
+    .btn-table-download {
+      background: #0d6efd;
+      color: #fff;
+      border-color: #0d6efd;
+    }
+
+    .btn-table-download:hover {
+      background: #084298;
+    }
+
+    .btn-table-export {
+      background: #198754;
+      color: #fff;
+      border-color: #198754;
+    }
+
+    .btn-table-export:hover {
+      background: #146c43;
+    }
+
+    /* Botón flotante ZIP */
+    .zip-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      box-shadow: 0 4px 12px rgb(0 0 0 /.25);
+      border-radius: 50%;
+      width: 54px;
+      height: 54px;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .dashboard-main {
       padding: 1.5rem 2rem;
       font-family: 'Segoe UI', Arial, sans-serif;
     }
@@ -31,66 +125,15 @@
       font-size: .95rem;
       margin-bottom: 2rem;
     }
-    .actions button,
-    .actions a {
-      margin-right: .4rem;
-      padding: .3rem .6rem;
-      font-size: .85rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+
+    th,
+    td {
+      padding: .45em .65em;
+      border-bottom: 1px solid #e3e3e3;
     }
 
-    .btn-view {
-      background: #0069d9;
-      color: #fff;
-    }
-
-    .btn-del {
-      background: #dc3545;
-      color: #fff;
-    }
-
-    .btn-disabled {
-      opacity: .5;
-      cursor: not-allowed;
-    }
-
-    .zip-fab {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      z-index: 999;
-      background: #198754;
-      color: #fff;
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgb(0 0 0 /.25);
-      font-size: 1.4rem;
-      cursor: pointer;
-      transition: background .2s;
-    }
-
-    .zip-fab:hover {
-      background: #146c43;
-    }
-
-    .historial h3 {
-      margin-bottom: .5rem;
-      font-size: 1.15rem;
-    }
-
-    .historial table td.actions a {
-      background: #0d6efd;
-      color: #fff;
-    }
-
-    .historial table td.actions a.resol {
-      background: #6c757d;
+    .actions {
+      white-space: nowrap;
     }
 
     .no-data {
@@ -98,6 +141,18 @@
       font-style: italic;
       text-align: center;
       padding: 1rem 0;
+    }
+
+    @media (max-width: 650px) {
+      .dashboard-main {
+        padding: 1rem .4rem;
+      }
+
+      table,
+      th,
+      td {
+        font-size: .93rem;
+      }
     }
   </style>
 </head>
@@ -140,12 +195,17 @@
               <td><?= htmlspecialchars($s['nombre']) ?></td>
               <td><?= date('d/m/Y H:i', strtotime($s['fecha_solicitud'])) ?></td>
               <td class="actions">
-                <a class="btn-view" target="_blank" href="?action=ver&id=<?= $s['id'] ?>">Ver</a>
-
+                <a class="btn-table-action btn-table-view" target="_blank" href="?action=ver&id=<?= $s['id'] ?>" title="Ver solicitud">
+                  <i class="fa fa-eye"></i><span>Ver</span>
+                </a>
                 <?php if ($puedeEliminar): ?>
-                  <button class="btn-del" data-id="<?= $s['id'] ?>">Eliminar</button>
+                  <button class="btn-table-action btn-table-delete" data-id="<?= $s['id'] ?>" type="button">
+                    <i class="fa fa-trash-alt"></i><span>Eliminar</span>
+                  </button>
                 <?php else: ?>
-                  <button class="btn-del btn-disabled" disabled title="Fuera de rango">Eliminar</button>
+                  <button class="btn-table-action btn-table-delete" disabled title="Fuera de rango" type="button">
+                    <i class="fa fa-trash-alt"></i><span>Eliminar</span>
+                  </button>
                 <?php endif; ?>
               </td>
             </tr>
@@ -174,10 +234,16 @@
                 <td><?= htmlspecialchars($h['periodo_label']) ?></td>
                 <td class="cnt"><?= $h['total'] ?></td>
                 <td class="actions">
-                  <a href="?action=descargarZip&periodo_id=<?= $h['periodo_id'] ?>" class="btn-view"
-                    title="Descargar ZIP">ZIP</a>
-                  <a href="?action=descargarResolucion&periodo_id=<?= $h['periodo_id'] ?>" class="btn-view resol"
-                    title="Resolución">Resol.</a>
+                  <a href="?action=descargarZip&periodo_id=<?= $h['periodo_id'] ?>"
+                    class="btn-table-action btn-table-download"
+                    title="Descargar ZIP">
+                    <i class="fa fa-file-archive"></i><span>ZIP</span>
+                  </a>
+                  <a href="?action=descargarResolucion&periodo_id=<?= $h['periodo_id'] ?>"
+                    class="btn-table-action btn-table-export"
+                    title="Resolución">
+                    <i class="fa fa-file-pdf"></i><span>Resol.</span>
+                  </a>
                 </td>
               </tr>
             <?php endforeach; ?>
@@ -189,18 +255,21 @@
 
   <!-- ======= Botón flotante ZIP (tras cierre de envíos) ======= -->
   <?php if ($periodo && $puedeDescargarZip): ?>
-    <a class="zip-fab" href="?action=descargarZip&periodo_id=<?= (int) $periodo['id'] ?>" title="Descargar ZIP"><span
-        style="transform:rotate(90deg)">⤓</span></a>
+    <a class="btn-table-action btn-table-download zip-fab"
+      href="?action=descargarZip&periodo_id=<?= (int) $periodo['id'] ?>"
+      title="Descargar ZIP">
+      <i class="fa fa-file-archive"></i>
+    </a>
   <?php endif; ?>
 
   <!-- ======= JS: eliminación + actualización del historial ======= -->
   <script>
     document.addEventListener('click', e => {
-      if (!e.target.classList.contains('btn-del') || e.target.disabled) return;
+      if (!e.target.closest('.btn-table-delete') || e.target.disabled) return;
 
-      const id = e.target.dataset.id;
+      const btn = e.target.closest('.btn-table-delete');
+      const id = btn.dataset.id;
       const row = document.getElementById('row-' + id);
-      const creditosFila = parseInt(row.dataset.creditos, 10) || 0;
 
       Swal.fire({
         title: '¿Eliminar solicitud?',
@@ -215,16 +284,20 @@
         try {
           const res = await fetch('?action=eliminar', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id })
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              id
+            })
           });
           const j = await res.json();
           if (!j.success) throw new Error(j.message || 'Error');
 
-          /* 1) Remover fila */
+          // Remover fila
           row.remove();
 
-          /* 2) Actualizar historial */
+          // Actualizar historial
           const histRow = document.querySelector(
             'tr[data-periodo="<?= $periodo ? (int) $periodo['id'] : 0 ?>"]'
           );
@@ -245,8 +318,20 @@
       });
     });
   </script>
-  <script src="<?= BASE_URL ?>assets/js/mobile-menu.js"></script>
 
+  <?php if (!empty($_GET['error_resolucion']) && isset($_GET['anio'], $_GET['per'])): ?>
+    <script>
+      Swal.fire({
+        icon: 'info',
+        title: 'Resolución no disponible',
+        text: 'Espere a que finalice el periodo de asignación para consultar la resolución del periodo <?= htmlspecialchars($_GET['anio']) ?>-<?= htmlspecialchars($_GET['per']) ?>.',
+        confirmButtonText: 'Entendido'
+      });
+    </script>
+  <?php endif; ?>
+
+
+  <script src="<?= BASE_URL ?>assets/js/mobile-menu.js"></script>
 </body>
 
 </html>

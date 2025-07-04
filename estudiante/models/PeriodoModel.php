@@ -65,22 +65,31 @@ class PeriodoModel
         $fin    = new DateTimeImmutable($periodo['fin_asignacion_docentes']);
         return $now >= $inicio && $now <= $fin;
     }
-
     /**
-     * Recupera el último documento de resolución (PDF o similar) si existe.
+     * Devuelve año y periodo para un periodo dado.
      */
-    public function getResolucion(int $periodoId): ?string
+    public function getResolucionCompleta(int $periodoId): ?array
     {
-        $sql = "
-            SELECT documento
-              FROM resoluciones
-             WHERE periodo_id = ?
-          ORDER BY fecha_resolucion DESC
-             LIMIT 1
-        ";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->pdo->prepare("
+        SELECT p.anio, p.periodo, p.estado, r.documento
+        FROM periodos p
+        JOIN resoluciones r ON r.periodo_id = p.id
+        WHERE p.id = ?
+        LIMIT 1
+    ");
         $stmt->execute([$periodoId]);
-        $bin = $stmt->fetchColumn();
-        return $bin ?: null;
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+    }
+
+    public function getPeriodoConEstado(int $periodoId): ?array
+    {
+        $stmt = $this->pdo->prepare("
+        SELECT anio, periodo, estado
+        FROM periodos
+        WHERE id = ?
+        LIMIT 1
+    ");
+        $stmt->execute([$periodoId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
 }

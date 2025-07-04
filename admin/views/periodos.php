@@ -8,6 +8,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
 <body>
   <?php include __DIR__ . '/../../components/header_main.php'; ?>
   <?php include __DIR__ . '/../../components/sidebar.php'; ?>
@@ -103,24 +105,45 @@
                 <td><?= htmlspecialchars($p['periodo']) ?></td>
                 <td><?= (int) ($p['total_solicitudes'] ?? 0) ?></td>
                 <td><?= (int) ($p['cursos_asignados'] ?? 0) ?></td>
+
+                <!-- Columna Resolución -->
                 <td>
                   <div class="action-buttons">
                     <?php if (!empty($p['ultima_resolucion'])): ?>
-                      <a href="<?= BASE_URL ?>uploads/resoluciones/<?= urlencode($p['ultima_resolucion']) ?>" download class="btn-table-action btn-table-download" title="Descargar Resolución <?= $p['anio'] ?>-<?= $p['periodo'] ?>">
+                      <!-- Ya hay PDF: Descargar -->
+                      <a href="<?= BASE_URL ?>uploads/resoluciones/<?= urlencode($p['ultima_resolucion']) ?>"
+                        download
+                        class="btn-table-action btn-table-download"
+                        title="Descargar Resolución <?= $p['anio'] ?>-<?= $p['periodo'] ?>">
                         <i class="fa fa-file-download"></i><span>Descargar</span>
+                      </a>
+                    <?php elseif ($p['estado'] === 'cerrado'): ?>
+                      <!-- Cerrado y sin PDF: Generar -->
+                      <a href="<?= BASE_URL ?>admin/periodos.php?action=resolucion&id=<?= (int)$p['id'] ?>"
+                        class="btn-table-action btn-table-export"
+                        title="Generar Resolución <?= $p['anio'] ?>-<?= $p['periodo'] ?>">
+                        <i class="fa fa-file-pdf"></i><span>Generar</span>
                       </a>
                     <?php else: ?>
                       &mdash;
                     <?php endif; ?>
                   </div>
                 </td>
+
                 <td>
                   <div class="action-buttons">
-                    <a href="<?= BASE_URL ?>admin/periodos.php?action=export&id=<?= (int) $p['id'] ?>" class="btn-table-action btn-table-export" title="Exportar Periodo <?= $p['anio'] ?>-<?= $p['periodo'] ?>">
-                      <i class="fa fa-file-export"></i><span>Exportar</span>
-                    </a>
+                    <?php if ($p['estado'] === 'cerrado'): ?>
+                      <a href="<?= BASE_URL ?>admin/periodos.php?action=export&id=<?= (int) $p['id'] ?>"
+                        class="btn-table-action btn-table-export"
+                        title="Exportar Periodo <?= $p['anio'] ?>-<?= $p['periodo'] ?>">
+                        <i class="fa fa-file-export"></i><span>Exportar</span>
+                      </a>
+                    <?php else: ?>
+                      &mdash;
+                    <?php endif; ?>
                   </div>
                 </td>
+
                 <td>
                   <div class="action-buttons">
                     <?php if ($p['estado'] === 'activo' && !$this->periodoModel->hasSolicitudes($p['id'])): ?>
@@ -164,7 +187,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.btn-table-delete').forEach(btn => {
-        btn.addEventListener('click', function (e) {
+        btn.addEventListener('click', function(e) {
           e.preventDefault();
           const url = this.href;
           const anio = this.dataset.anio;
@@ -191,4 +214,5 @@
   </script>
   <script src="<?= BASE_URL ?>assets/js/mobile-menu.js"></script>
 </body>
+
 </html>

@@ -8,11 +8,10 @@ class UsuarioController {
     private PDO $pdo;
 
     public function __construct(PDO $pdo) {
-        // Asegurarnos de que la sesión está iniciada (para mensajes flash y credenciales)
+        // Asegurarnos de que la sesión está iniciada
         if (session_status() !== PHP_SESSION_ACTIVE) {
             session_start();
         }
-
         $this->pdo   = $pdo;
         $this->model = new UsuarioModel($pdo);
     }
@@ -35,20 +34,19 @@ class UsuarioController {
 
     /**
      * Formulario para crear un nuevo usuario.
-     * Cargamos también el listado de permisos para mostrarlos.
+     * Ya no hay tabla de permisos.
      */
     public function create(string $rol) {
-        $usuario          = null;
-        $errores          = [];
-        $permisos         = $this->model->getAllPermisos();
-        $usuarioPermisos  = [];
+        $usuario         = null;
+        $errores         = [];
+        $permisos        = [];  // eliminados
+        $usuarioPermisos = [];
         require __DIR__ . '/../views/usuarios_form.php';
     }
 
     /**
      * Formulario para editar un usuario existente.
-     * Cargamos sus datos, la lista de todos los permisos,
-     * y cuáles ya están asignados a ese usuario.
+     * Ya no cargamos permisos.
      */
     public function edit(int $id, string $rol) {
         $usuario = $this->model->getById($id);
@@ -58,22 +56,17 @@ class UsuarioController {
             exit;
         }
         $errores         = [];
-        $permisos        = $this->model->getAllPermisos();
-        $usuarioPermisos = $this->model->getPermisosPorUsuario($id);
+        $permisos        = [];  // eliminados
+        $usuarioPermisos = [];
         require __DIR__ . '/../views/usuarios_form.php';
     }
 
     /**
      * Procesa la creación de un usuario.
-     * Valida, crea, asigna permisos y redirige.
      */
     public function store(array $data) {
-        $rol      = $data['rol'] ?? '';
-        $errores  = $this->validarDatos($data);
-
-        // Siempre recargamos permisos para el form en caso de error
-        $permisos        = $this->model->getAllPermisos();
-        $usuarioPermisos = $data['permisos'] ?? [];
+        $rol     = $data['rol'] ?? '';
+        $errores = $this->validarDatos($data);
 
         if (!empty($errores)) {
             $usuario = null;
@@ -82,49 +75,40 @@ class UsuarioController {
         }
 
         try {
-            // Para administrador y administrativo: el nombre de usuario será el DNI
-            if (in_array($rol, ['administrador', 'administrativo'])) {
+            // Para admin/administrativo, el usuario = DNI
+            if (in_array($rol, ['administrador', 'administrativo'], true)) {
                 $data['usuario'] = $data['dni'];
             }
 
             $data['rol_id'] = $this->getRolIdPorNombre($rol);
             $this->model->crear($data);
 
-            // Obtener ID del nuevo usuario y asignar permisos
-            $newUserId = $this->model->getUltimoIdInsertado();
-            $this->model->asignarPermisosUsuario($newUserId, $data['permisos'] ?? []);
-
+            // Ya no asignamos permisos
             $_SESSION['success'] = "Usuario registrado correctamente.";
             header("Location: " . BASE_URL . "admin/usuarios.php?action=list&rol=$rol");
             exit;
         } catch (Exception $e) {
             $errores[] = 'Error al crear el usuario: ' . $e->getMessage();
-            $usuario = null;
+            $usuario   = null;
             require __DIR__ . '/../views/usuarios_form.php';
         }
     }
 
     /**
      * Procesa la actualización de un usuario existente.
-     * Valida, actualiza, reasigna permisos y redirige.
      */
     public function update(int $id, array $data) {
-        $rol      = $data['rol'] ?? '';
-        $errores  = $this->validarDatos($data, $id);
+        $rol     = $data['rol'] ?? '';
+        $errores = $this->validarDatos($data, $id);
 
-        // En caso de error recargamos todo para el form
-        $usuario          = $this->model->getById($id);
-        $permisos         = $this->model->getAllPermisos();
-        $usuarioPermisos  = $data['permisos'] ?? [];
-
+        $usuario = $this->model->getById($id);
         if (!empty($errores)) {
             require __DIR__ . '/../views/usuarios_form.php';
             return;
         }
 
         try {
-            // Para administrador y administrativo: el nombre de usuario será el DNI
-            if (in_array($rol, ['administrador', 'administrativo'])) {
+            if (in_array($rol, ['administrador', 'administrativo'], true)) {
                 $data['usuario'] = $data['dni'];
             }
 
@@ -132,9 +116,7 @@ class UsuarioController {
             $data['id']     = $id;
             $this->model->actualizar($data);
 
-            // Reasignar permisos
-            $this->model->asignarPermisosUsuario($id, $data['permisos'] ?? []);
-
+            // Ya no reasignamos permisos
             $_SESSION['success'] = "Usuario actualizado correctamente.";
             header("Location: " . BASE_URL . "admin/usuarios.php?action=list&rol=$rol");
             exit;
@@ -165,7 +147,7 @@ class UsuarioController {
     }
 
     /**
-     * Valida los datos del formulario (creación y edición).
+     * Valida los datos del formulario.
      */
     private function validarDatos(array $data, ?int $id = null): array {
         $errores = [];
@@ -200,7 +182,7 @@ class UsuarioController {
             $errores[] = "El teléfono debe tener exactamente 9 dígitos.";
         }
 
-        // Usuario (solo para estudiantes)
+        // Usuario sólo para estudiantes
         if (!empty($data['usuario']) && ($data['rol'] ?? '') === 'estudiante') {
             if ($this->model->existeUsuario($data['usuario'],$id)) {
                 $errores[] = "Ya existe un usuario con este nombre de usuario.";
@@ -209,14 +191,12 @@ class UsuarioController {
 
         // Contraseña
         if ($id === null) {
-            // creación
             if (empty($data['contraseña'])) {
                 $errores[] = "La contraseña es requerida.";
             } elseif (strlen($data['contraseña']) < 6) {
                 $errores[] = "La contraseña debe tener al menos 6 caracteres.";
             }
         } else {
-            // edición
             if (!empty($data['contraseña']) && strlen($data['contraseña']) < 6) {
                 $errores[] = "La contraseña debe tener al menos 6 caracteres.";
             }

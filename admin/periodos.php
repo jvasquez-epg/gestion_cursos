@@ -5,11 +5,12 @@ require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../config/conexion.php';
 require_once __DIR__ . '/controllers/PeriodoController.php';
 
-// Arranca sesión (para mensajes flash y control de acceso)
 session_start();
 
 $controller = new PeriodoController($pdo);
-$action = $_GET['action'] ?? 'index';
+// 1) Capturamos acción e ID al inicio:
+$action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING) ?: 'index';
+$id     = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) ?: 0;
 
 switch ($action) {
     case 'create':
@@ -26,7 +27,6 @@ switch ($action) {
         break;
 
     case 'edit':
-        $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
         $controller->edit($id);
         break;
 
@@ -40,11 +40,31 @@ switch ($action) {
         break;
 
     case 'delete':
-        $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
         $controller->delete($id);
         break;
 
+    // ——————————
+    // NUEVO: generar resolución PDF
+    case 'resolucion':
+        if ($id) {
+            $controller->resolucion($id);
+        } else {
+            header('Location: ' . BASE_URL . 'admin/periodos.php');
+            exit;
+        }
+        break;
+    case 'export':
+        if ($id) {
+            $controller->export();
+        } else {
+            header('Location: ' . BASE_URL . 'admin/periodos.php');
+            exit;
+        }
+        break;
+
+
     default:
+        // index o dashboard
         $controller->index();
         break;
 }

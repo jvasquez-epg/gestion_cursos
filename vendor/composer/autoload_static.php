@@ -28,7 +28,12 @@ class ComposerStaticInit175f515b2811e085f3258b59792b25af
         ),
         'F' => 
         array (
+            'Fpdf\\' => 5,
             'FontLib\\' => 8,
+        ),
+        'E' => 
+        array (
+            'Emscherland\\Fpdf\\' => 17,
         ),
         'D' => 
         array (
@@ -65,9 +70,17 @@ class ComposerStaticInit175f515b2811e085f3258b59792b25af
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
         ),
+        'Fpdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fpdf/fpdf/src/Fpdf',
+        ),
         'FontLib\\' => 
         array (
             0 => __DIR__ . '/..' . '/dompdf/php-font-lib/src/FontLib',
+        ),
+        'Emscherland\\Fpdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/emscherland/fpdf/src',
         ),
         'Dompdf\\' => 
         array (

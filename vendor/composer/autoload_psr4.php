@@ -13,6 +13,8 @@ return array(
     'PhpOffice\\PhpWord\\' => array($vendorDir . '/phpoffice/phpword/src/PhpWord'),
     'PhpOffice\\Math\\' => array($vendorDir . '/phpoffice/math/src/Math'),
     'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),
+    'Fpdf\\' => array($vendorDir . '/fpdf/fpdf/src/Fpdf'),
     'FontLib\\' => array($vendorDir . '/dompdf/php-font-lib/src/FontLib'),
+    'Emscherland\\Fpdf\\' => array($vendorDir . '/emscherland/fpdf/src'),
     'Dompdf\\' => array($vendorDir . '/dompdf/dompdf/src'),
 );
