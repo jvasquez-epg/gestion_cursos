@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="logo-container">
@@ -29,7 +28,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -39,7 +37,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="services">
         <div class="container">
             <h2 class="section-title">Nuestros Servicios</h2>
@@ -49,23 +46,26 @@
                         <i class="fas fa-book"></i>
                     </div>
                     <h3>Sistema de Gestión Cursos Vacacionales y de Nivelación</h3>
-                    <p>Accede a nuestros cursos especiales durante periodos vacacionales y de nivelación académica.</p>
+                    <p>Solicita nuestros cursos durante periodos vacacionales y de nivelación académica.</p>
                     <div class="login-options">
-                        <a href="login_admin.php" class="login-btn admin">Administrador/Administrativo</a>
-                        <a href="login_estudiante.php" class="login-btn student">Estudiante</a>
+                        <a href="login.php" class="login-btn">Iniciar Sesión</a>
+                        <a href="signup.php" class="signup-btn">Registrarse</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="about">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
                     <h2 class="section-title">Acerca de la Facultad</h2>
-<p>La Facultad de Ingeniería de Sistemas e Informática (FISI) inició sus actividades en Nauta, en un terreno donado por la Municipalidad de Loreto.</p> <p>En 1996, se formó una comisión para estudiar su creación, y en diciembre de 1997, fue aprobada oficialmente, marcando un hito en la descentralización universitaria de Loreto.</p> <p>En 1998, se inauguró la FISI con el apoyo de autoridades y la comunidad, iniciando sus actividades académicas con 100 alumnos.</p> <p>Actualmente, la facultad cuenta con 440 estudiantes, 20 docentes y una infraestructura moderna en Iquitos, bajo el decanato del Dr. Carlos Alberto García Cortegano.</p>                </div>
+                    <p>La Facultad de Ingeniería de Sistemas e Informática (FISI) inició sus actividades en Nauta, en un terreno donado por la Municipalidad de Loreto.</p>
+                    <p>En 1996, se formó una comisión para estudiar su creación, y en diciembre de 1997, fue aprobada oficialmente, marcando un hito en la descentralización universitaria de Loreto.</p>
+                    <p>En 1998, se inauguró la FISI con el apoyo de autoridades y la comunidad, iniciando sus actividades académicas con 100 alumnos.</p>
+                    <p>Actualmente, la facultad cuenta con 440 estudiantes, 20 docentes y una infraestructura moderna en Iquitos, bajo el decanato del Dr. Carlos Alberto García Cortegano.</p>
+                </div>
                 <div class="about-image">
                     <img src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Estudiantes de Ingeniería de Sistemas">
                 </div>
@@ -73,7 +73,6 @@
         </div>
     </section>
 
-    <!-- News Section -->
     <section class="news">
         <div class="container">
             <h2 class="section-title">Últimas Noticias</h2>
@@ -114,7 +113,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">

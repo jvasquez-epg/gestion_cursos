@@ -52,8 +52,30 @@ class SolicitudesController
         }
 
         // Historial agrupado (periodo, cantidad)
-        $historial = $this->solicitudModel
-            ->resumenPorPeriodo($estudianteId);
+        // Historial agrupado (periodo, cantidad)
+        $historial = $this->solicitudModel->resumenPorPeriodo($estudianteId);
+
+        // Incluir el periodo actual aunque no tenga solicitudes
+        if ($periodo) {
+            $periodoIdActual = (int) $periodo['id'];
+            $existe = false;
+
+            foreach ($historial as $h) {
+                if ((int) $h['periodo_id'] === $periodoIdActual) {
+                    $existe = true;
+                    break;
+                }
+            }
+
+            if (!$existe) {
+                $historial[] = [
+                    'periodo_id'     => $periodo['id'],
+                    'periodo_label'  => $periodo['anio'] . '-' . $periodo['periodo'],
+                    'total'          => 0,
+                ];
+            }
+        }
+        usort($historial, fn($a, $b) => $b['periodo_id'] <=> $a['periodo_id']);
 
         extract(compact(
             'periodo',

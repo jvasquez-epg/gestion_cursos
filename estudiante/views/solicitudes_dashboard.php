@@ -234,11 +234,19 @@
                 <td><?= htmlspecialchars($h['periodo_label']) ?></td>
                 <td class="cnt"><?= $h['total'] ?></td>
                 <td class="actions">
-                  <a href="?action=descargarZip&periodo_id=<?= $h['periodo_id'] ?>"
-                    class="btn-table-action btn-table-download"
-                    title="Descargar ZIP">
-                    <i class="fa fa-file-archive"></i><span>ZIP</span>
-                  </a>
+                  <?php if ((int)$h['total'] > 0): ?>
+                    <a href="?action=descargarZip&periodo_id=<?= $h['periodo_id'] ?>"
+                      class="btn-table-action btn-table-download"
+                      title="Descargar ZIP">
+                      <i class="fa fa-file-archive"></i><span>ZIP</span>
+                    </a>
+                  <?php else: ?>
+                    <button class="btn-table-action btn-table-download" disabled
+                      title="Sin solicitudes">
+                      <i class="fa fa-file-archive"></i><span>ZIP</span>
+                    </button>
+                  <?php endif; ?>
+
                   <a href="?action=descargarResolucion&periodo_id=<?= $h['periodo_id'] ?>"
                     class="btn-table-action btn-table-export"
                     title="Resolución">
@@ -253,14 +261,6 @@
     </div>
   </div>
 
-  <!-- ======= Botón flotante ZIP (tras cierre de envíos) ======= -->
-  <?php if ($periodo && $puedeDescargarZip): ?>
-    <a class="btn-table-action btn-table-download zip-fab"
-      href="?action=descargarZip&periodo_id=<?= (int) $periodo['id'] ?>"
-      title="Descargar ZIP">
-      <i class="fa fa-file-archive"></i>
-    </a>
-  <?php endif; ?>
 
   <!-- ======= JS: eliminación + actualización del historial ======= -->
   <script>
