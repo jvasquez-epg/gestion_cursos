@@ -1,4 +1,7 @@
 {
+    "name": "jvasquez-epg/gestion_cursos",
+    "description": "Sistema de Gestión de Cursos de Nivelación Vacacional",
+    "type": "project",
     "require": {
         "phpoffice/phpword": "^1.3",
         "dompdf/dompdf": "^3.1",
