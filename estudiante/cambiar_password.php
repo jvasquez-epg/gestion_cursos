@@ -1,5 +1,17 @@
 <?php
-// estudiante/cambiar_password.php
+/*
+ * Script para cambio de contraseña de estudiante
+ * - Verifica sesión activa
+ * - Valida campos del formulario (actual, nueva, confirmar)
+ * - Comprueba que la contraseña actual sea correcta
+ * - Actualiza la contraseña con hash seguro (bcrypt)
+ * - Usa mensajes flash para alertas mediante SweetAlert
+ * - Redirige adecuadamente según resultados
+ * 
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+ 
 session_start();
 require_once __DIR__ . '/../config/conexion.php';
 

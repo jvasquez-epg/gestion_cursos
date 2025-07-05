@@ -1,4 +1,15 @@
 <?php
+/**
+ * Script de registro de estudiantes en el sistema académico.
+ * Implementa un flujo en pasos para validar datos desde SIGAU,
+ * procesar información de perfil, malla y progreso académico,
+ * y finalmente registrar al estudiante en la base de datos interna.
+ * Utiliza integración con Python (SIGAU) y protección de seguridad en validaciones.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
 ini_set('session.gc_maxlifetime', 0); // 0 = sin límite
 session_set_cookie_params(0);
 session_start();

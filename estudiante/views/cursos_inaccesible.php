@@ -1,3 +1,16 @@
+<!--
+  Vista: cursos.php (Mensaje de restricción o cierre)
+
+  Esta vista se muestra cuando no hay cursos disponibles o el periodo no está habilitado.
+  Presenta:
+  - Diseño minimalista centrado vertical y horizontalmente.
+  - Mensaje informativo para el estudiante, parametrizable desde el controlador.
+  - Integración con la interfaz común (sidebar, headers, menú móvil).
+  - Estilos ligeros para una presentación clara y profesional.
+
+  Autor: ASI-GRUPO 5
+  Año: 2025
+-->
 <?php
 
 ?>

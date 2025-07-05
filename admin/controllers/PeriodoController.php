@@ -1,4 +1,15 @@
 <?php
+/**
+ * Controlador para la gestión de periodos académicos.
+ * Permite crear, actualizar, eliminar y generar resoluciones de periodos,
+ * así como exportar solicitudes, bajo la arquitectura MVC.
+ * Acceso restringido a usuarios administradores y administrativos.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+ 
 // admin/controllers/PeriodoController.php
 
 require_once __DIR__ . '/../models/PeriodoModel.php';

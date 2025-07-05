@@ -1,4 +1,15 @@
 <?php
+/**
+ * Modelo de usuarios del sistema de gestión académica.
+ * Gestiona operaciones de consulta, registro, actualización y eliminación
+ * de usuarios con control de duplicidad sobre datos clave (DNI, correo, usuario),
+ * así como reportes por rol y utilidades complementarias.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+ 
 // admin/models/UsuarioModel.php
 
 class UsuarioModel

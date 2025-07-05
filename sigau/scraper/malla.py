@@ -1,3 +1,23 @@
+# ------------------------------------------------------------------------------
+# Módulo de scraping para la malla curricular del estudiante
+#
+# Autor: ASI-GRUPO 5
+# Año: 2025
+#
+# Este script accede a la página de malla curricular del sistema académico
+# institucional mediante Selenium, analiza el DOM, y extrae todos los cursos
+# registrados por ciclo. También identifica los prerrequisitos declarados.
+#
+# Características:
+# - Detecta los bloques por ciclo (div.m-section)
+# - Extrae: código, nombre, créditos, prerrequisitos
+# - Interpreta encabezados de ciclos como "PRIMER", "SEGUNDO", "I", "II", etc.
+# - Usa expresiones regulares para extraer los códigos y nombres de prerrequisitos
+# - Devuelve una lista de diccionarios con todos los cursos
+#
+# Devuelve: lista de cursos o `None` si ocurre un error
+# ------------------------------------------------------------------------------
+
 import re
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait

@@ -1,4 +1,17 @@
 <?php
+
+/**
+ * Vista de listado de docentes.
+ * Muestra la tabla de docentes registrados, con acciones para crear, editar o eliminar según permisos.
+ * Variables requeridas:
+ *   $docentes   — Lista de docentes a mostrar
+ *   $isEditable — Permite mostrar botones de edición/registro solo a administradores o administrativos
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+ 
 // admin/views/docentes_list.php
 if (session_status() === PHP_SESSION_NONE) session_start();
 $isEditable = in_array($_SESSION['usuario_rol'] ?? '', ['administrador', 'administrativo']);

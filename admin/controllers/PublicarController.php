@@ -1,4 +1,14 @@
 <?php
+/**
+ * Controlador para la publicación de resultados de asignación de cursos.
+ * Prepara y organiza los conjuntos de cursos asignados, sin docente o con solicitudes insuficientes,
+ * para su publicación en la vista correspondiente, según la lógica académica del sistema.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+ 
 // admin/controllers/PublicarController.php
 
 require_once __DIR__ . '/../models/AsignacionModel.php';

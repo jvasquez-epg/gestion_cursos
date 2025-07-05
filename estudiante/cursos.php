@@ -1,5 +1,16 @@
 <?php
-// estudiante/cursos.php
+/*
+ * estudiante/cursos.php
+ * 
+ * Punto de entrada para gestionar cursos desde el rol estudiante:
+ * - Muestra cursos disponibles según paridad y requisitos
+ * - Permite enviar solicitudes individuales o múltiples
+ * - Permite cancelar solicitudes realizadas
+ * - Determina la acción mediante el parámetro `action`
+ * 
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 declare(strict_types=1);
 
 require_once __DIR__ . '/../config/config.php';

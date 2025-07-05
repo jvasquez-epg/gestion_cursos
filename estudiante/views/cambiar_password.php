@@ -1,3 +1,17 @@
+<?php
+/*
+ * Vista: cambiar_password.php
+ * 
+ * Formulario para que el estudiante actualice su contraseña:
+ * - Solicita la contraseña actual, la nueva y la confirmación
+ * - Valida coincidencia de contraseñas en cliente con JavaScript
+ * - Usa SweetAlert para alertas visuales y mensajes flash
+ * - Incluye diseño responsivo con estilos perfil.css, main.css y palette.css
+ * 
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+ ?>
 <!DOCTYPE html>
 <html lang="es">
 

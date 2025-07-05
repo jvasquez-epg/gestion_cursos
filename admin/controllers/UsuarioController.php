@@ -1,4 +1,14 @@
 <?php
+/**
+ * Controlador de Usuarios del sistema de gestión académica.
+ * Permite la gestión, registro, edición y eliminación de cuentas de usuario
+ * según su rol (administrador, administrativo, estudiante) en el entorno académico.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+ 
 // admin/controllers/UsuarioController.php
 
 require_once __DIR__ . '/../models/UsuarioModel.php';

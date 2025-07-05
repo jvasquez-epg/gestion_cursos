@@ -1,4 +1,15 @@
 <?php
+/**
+ * Modelo de gestión de periodos académicos.
+ * Permite el manejo integral de los ciclos académicos: creación, cierre,
+ * actualización, validación y obtención de reportes asociados.
+ * Cumple con la política académica institucional para la gestión ordenada de periodos.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+ 
 // admin/models/PeriodoModel.php
 
 class PeriodoModel

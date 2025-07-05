@@ -1,7 +1,14 @@
 <?php
-// admin/views/solicitudes_detalle.php
-// Variables esperadas:
-//   $detalles (array) — resultado de SolicitudModel::getDetallePorCurso()
+/*
+ * admin/views/solicitudes_detalle.php
+ * Vista parcial para mostrar el detalle de solicitudes por curso.
+ * Variables esperadas:
+ *   $detalles — Listado de estudiantes con sus datos (array), generado por SolicitudModel::getDetallePorCurso()
+ * Muestra: nombre completo, DNI, usuario y fecha/hora de solicitud.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
 
 if (empty($detalles)): ?>
   <p>No hay solicitudes.</p>

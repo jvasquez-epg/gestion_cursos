@@ -1,6 +1,17 @@
 <?php
-// admin/views/usuarios_list.php
-// Variables: $usuarios (array de usuarios), $rol (string), $BASE_URL
+/*
+ * admin/views/usuarios_list.php
+ * Vista de listado de usuarios según rol para el administrador.
+ * Variables esperadas:
+ *   $usuarios — Lista de usuarios a mostrar (array)
+ *   $rol      — Rol del usuario filtrado ('administrador', 'administrativo', 'estudiante')
+ *   $BASE_URL — Ruta base del sistema (string)
+ * Incluye acciones de creación, edición y eliminación (excepto para estudiantes),
+ * manejo seguro de sesión y alertas con SweetAlert2.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
 
 if (session_status() === PHP_SESSION_NONE)
     session_start();

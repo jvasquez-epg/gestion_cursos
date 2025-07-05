@@ -1,4 +1,14 @@
 <?php
+/**
+ * Modelo de Docentes.
+ * Permite la gestión de los datos de docentes, incluyendo operaciones de registro, consulta,
+ * actualización y eliminación de registros en la base de datos institucional.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+ 
 // admin/models/DocenteModel.php
 
 class DocenteModel {

@@ -1,3 +1,22 @@
+# ------------------------------------------------------------------------------
+# Módulo de scraping para obtener la situación académica del estudiante
+#
+# Autor: ASI-GRUPO 5
+# Año: 2025
+#
+# Este script automatiza el acceso a la sección de "Progreso Académico" del
+# sistema institucional, y extrae la lista de cursos junto con su estado
+# (Cumplido o Pendiente), tanto del plan regular como de los cursos electivos.
+#
+# Características:
+# - Accede a múltiples tablas dentro de acordeones y secciones específicas
+# - Extrae código, nombre, créditos y estado de cada curso
+# - Considera tabla adicional de cursos electivos (si existe)
+# - Normaliza los estados no válidos como "Pendiente"
+#
+# Devuelve: diccionario con la clave 'cursos', que contiene una lista de dicts
+# ------------------------------------------------------------------------------
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC

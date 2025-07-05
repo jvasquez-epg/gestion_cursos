@@ -1,5 +1,17 @@
 <?php
-// estudiante/models/PeriodoModel.php
+/*
+ * Modelo PeriodoModel para gestión de periodos académicos
+ * Incluye métodos para obtener periodo activo, verificar fases
+ * y obtener resoluciones vinculadas.
+ * 
+ * Tablas implicadas:
+ *   • periodos        (id, anio, periodo, inicio_envio_solicitudes, fin_envio_solicitudes,
+ *                      inicio_asignacion_docentes, fin_asignacion_docentes, estado)
+ *   • resoluciones    (periodo_id, documento BLOB, fecha_resolucion)
+ * 
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 declare(strict_types=1);
 
 /**

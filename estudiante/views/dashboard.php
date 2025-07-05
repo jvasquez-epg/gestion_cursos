@@ -481,8 +481,6 @@
                     const targetDate = "<?= $params['fin_envio_solicitudes'] ?>".replace(' ', 'T');
                 <?php elseif ($fase === 'finalizado' && !empty($params['proximo_inicio'])): ?>
                     const targetDate = "<?= $params['proximo_inicio'] ?>".replace(' ', 'T');
-                <?php else: ?>
-                    const targetDate = null;
                 <?php endif; ?>
 
                 if (!targetDate) {

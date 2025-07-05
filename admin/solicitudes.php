@@ -1,5 +1,17 @@
 <?php
-// admin/solicitudes.php
+/*
+ * admin/solicitudes.php
+ * Punto de entrada para la gestión y consulta de solicitudes académicas por curso.
+ * Variables y contexto:
+ *   - $pdo                → conexión PDO a la base de datos
+ *   - SolicitudController → controlador de la lógica de solicitudes
+ * Flujo principal:
+ *   - 'index'    → Muestra el resumen de solicitudes por curso en el periodo activo.
+ *   - 'detalle'  → Devuelve (por AJAX) el detalle de alumnos que solicitaron un curso.
+ * Acceso restringido según sesión. Incluye control de acceso y mensajes flash.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../config/conexion.php';

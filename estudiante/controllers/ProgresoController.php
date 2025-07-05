@@ -1,5 +1,17 @@
 <?php
-// estudiante/controllers/ProgresoController.php
+/*
+ * Controlador para el módulo de progreso académico del estudiante.
+ * Variables esperadas en sesión:
+ *   - usuario_rol: Debe ser 'estudiante' para acceso permitido.
+ * Funcionalidad:
+ *   - Valida sesión y rol del usuario.
+ *   - Obtiene el progreso académico del estudiante desde el modelo.
+ *   - Carga la vista correspondiente para mostrar el dashboard de progreso.
+ * Uso:
+ *   - Incluye el modelo ProgresoModel para obtener los datos necesarios.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 
 require_once __DIR__ . '/../models/ProgresoModel.php';
 

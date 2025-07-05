@@ -1,5 +1,13 @@
 <?php
-// estudiante/models/DashboardModel.php
+/*
+ * Modelo DashboardModel para manejar datos del dashboard del estudiante.
+ * Incluye métodos para obtener periodo activo, fase del periodo,
+ * conteo de cursos, parámetros del periodo, estadísticas de solicitudes,
+ * asignaciones, cursos aperturados y resumen final.
+ * 
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 
 class DashboardModel
 {

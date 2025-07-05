@@ -1,4 +1,18 @@
 <?php
+/**
+ * Vista parcial de detalle de asignación de docente a curso.
+ * Muestra los datos del curso seleccionado y permite filtrar y asignar un docente.
+ * Variables esperadas:
+ *   $docentes (array) — listado de docentes
+ *   $curso    (array) — datos del curso con claves: curso_id, codigo, nombre, ciclo, creditos (opcional), asignacion_id, docente_id
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+
+
+ 
 // admin/views/asignaciones_detalle.php
 // Variables esperadas:
 //   $docentes (array) — listado de docentes

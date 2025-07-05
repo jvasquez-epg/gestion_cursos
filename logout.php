@@ -1,4 +1,12 @@
 <?php
+/**
+ * Script para cerrar la sesión de usuario de forma segura.
+ * Elimina los datos de sesión, destruye la cookie asociada
+ * y redirige al usuario a la pantalla de login.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 session_start();
 $_SESSION = [];
 if (ini_get("session.use_cookies")) {

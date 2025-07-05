@@ -1,10 +1,19 @@
 <?php
-// admin/views/periodos.php
-// Variables esperadas:
-//   $periodoActivo (array|null)
-//   $historial     (array)
-//   $error         (string|null)
-//   $success       (string|null)
+/*
+ * admin/views/periodos.php
+ * Vista principal de periodos académicos para el administrador.
+ * Variables esperadas:
+ *   $periodoActivo — Datos del periodo actual (array o null)
+ *   $historial     — Historial de periodos (array)
+ *   $error         — Mensaje de error (string o null)
+ *   $success       — Mensaje de éxito (string o null)
+ * Incluye acciones: creación, edición, generación y descarga de resoluciones,
+ * exportación y eliminación controlada de periodos.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

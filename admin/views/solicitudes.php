@@ -1,9 +1,16 @@
 <?php
-// admin/views/solicitudes.php
-// Variables esperadas:
-//   $periodo (array|null) — periodo activo
-//   $minReq  (int)        — mínimo de solicitudes para el periodo
-//   $cursos  (array)      — resultado de getResumenPorCurso
+/*
+ * admin/views/solicitudes.php
+ * Vista de resumen de solicitudes por curso en el periodo activo.
+ * Variables esperadas:
+ *   $periodo — Periodo activo (array|null)
+ *   $minReq  — Mínimo de solicitudes requerido (int)
+ *   $cursos  — Listado de cursos con solicitudes (array)
+ * Permite búsqueda y filtrado por ciclo, y muestra detalle de estudiantes por curso en modal.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
 
 // Iniciar sesión si no está activa
 if (session_status() === PHP_SESSION_NONE) {

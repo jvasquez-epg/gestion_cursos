@@ -1,13 +1,11 @@
 <?php
-/**
- * Dashboard Controller - Estudiante
- * 
- * Controlador principal para el dashboard de estudiantes que maneja
- * la visualización de estadísticas, solicitudes y asignaciones de cursos.
- * 
- * @author Sistema Académico
- * @version 1.0
- * @since 2025
+/*
+ * Controlador principal para el dashboard del estudiante.
+ * Gestiona la visualización de estadísticas, solicitudes y asignaciones de cursos,
+ * incluyendo validaciones de sesión, carga de datos y renderizado de vistas.
+ * Autor: Sistema Académico
+ * Versión: 1.0
+ * Año: 2025
  */
 
 declare(strict_types=1);

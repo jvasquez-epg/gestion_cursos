@@ -1,4 +1,17 @@
 <?php
+/**
+ * Vista principal de asignación de docentes a cursos.
+ * Presenta la lista de cursos con opción para buscar, filtrar por ciclo,
+ * asignar, editar o eliminar docentes, y ver cursos publicados.
+ * Variables requeridas:
+ *   $periodo (array|null) — Periodo académico activo
+ *   $cursos  (array)      — Cursos disponibles para asignación
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+
 // admin/views/asignaciones.php
 // Variables esperadas:
 //   $periodo (array|null)

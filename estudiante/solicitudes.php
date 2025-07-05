@@ -1,8 +1,24 @@
 <?php
-// estudiante/solicitudes.php
-// ─────────────────────────────────────────────────────────
-// Front-controller simple para el módulo “Solicitudes”
-// ─────────────────────────────────────────────────────────
+/*
+ * Punto de entrada: estudiante/solicitudes.php
+ *
+ * Controlador frontal del módulo de solicitudes académicas del estudiante.
+ * Permite visualizar solicitudes realizadas, eliminarlas si corresponde,
+ * descargar resoluciones oficiales o paquetes ZIP por periodo.
+ *
+ * Usa SolicitudesController para manejar las acciones disponibles.
+ *
+ * Acciones:
+ *   - ver                 → Mostrar solicitud individual en PDF
+ *   - eliminar            → Eliminar una solicitud (AJAX, JSON)
+ *   - descargarZip        → Descargar ZIP de solicitudes por periodo
+ *   - descargarResolucion → Descargar resolución del periodo
+ *   - dashboard           → Vista general e historial de solicitudes
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
 declare(strict_types=1);
 
 require_once __DIR__ . '/../config/config.php';

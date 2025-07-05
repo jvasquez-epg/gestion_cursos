@@ -1,4 +1,15 @@
 <?php
+/**
+ * Controlador de Reportes del sistema de gestión académica.
+ * Permite la generación, visualización y descarga de reportes en PDF
+ * (denegación, apertura, histórico, catálogo, resolución final) según el periodo seleccionado,
+ * integrando datos académicos y formato institucional.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+ 
 // admin/controllers/ReportesController.php
 
 declare(strict_types=1);

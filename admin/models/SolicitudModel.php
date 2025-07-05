@@ -1,4 +1,15 @@
 <?php
+/**
+ * Modelo de gestión de solicitudes académicas.
+ * Proporciona métodos para el resumen, detalle y agrupación
+ * de solicitudes de cursos por periodo, así como la obtención
+ * de documentos asociados para su posterior procesamiento administrativo.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+ 
 // admin/models/SolicitudModel.php
 
 class SolicitudModel

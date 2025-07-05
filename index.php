@@ -1,3 +1,11 @@
+<!--
+    Página principal informativa de la Facultad de Ingeniería de Sistemas e Informática.
+    Presenta información institucional, servicios, noticias y acceso al sistema académico.
+    Archivo principal de la interfaz pública.
+
+    Autor: ASI-GRUPO 5
+    Año: 2025
+-->
 <!DOCTYPE html>
 <html lang="es">
 <head>

@@ -1,5 +1,24 @@
 <?php
-// admin/usuarios.php
+/*
+ * admin/usuarios.php
+ * Punto de entrada para la gestión de usuarios del sistema.
+ * Variables y contexto:
+ *   - $pdo                  → Conexión PDO a la base de datos
+ *   - UsuarioController     → Controlador encargado de la lógica de usuarios
+ * Flujo principal:
+ *   - 'dashboard' → Muestra panel general de usuarios
+ *   - 'list'      → Lista usuarios por rol (admin, administrativo, estudiante)
+ *   - 'create'    → Formulario de creación (no permite estudiantes)
+ *   - 'edit'      → Edición de usuario (no permite estudiantes)
+ *   - 'store'     → Guarda un nuevo usuario (POST)
+ *   - 'update'    → Actualiza usuario existente (POST)
+ *   - 'delete'    → Elimina usuario (no permite estudiantes ni autodelete)
+ * Seguridad:
+ *   - Acceso restringido a administradores y administrativos
+ *   - Control de roles válidos y restricciones de acciones por tipo de usuario
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 
 session_start();
 

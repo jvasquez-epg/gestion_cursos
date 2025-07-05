@@ -1,6 +1,19 @@
 <?php
-// estudiante/views/progreso_dashboard.php
-// Variable disponible: $progreso (array con info del curso y estado)
+/*
+ * Vista: estudiante/views/progreso_dashboard.php
+ *
+ * Muestra el progreso académico del estudiante:
+ * - Tabla de cursos con estado (cumplido o pendiente)
+ * - Resumen superior con créditos completados, totales y porcentaje
+ * - Diseño adaptado con estilos integrados y colores institucionales
+ *
+ * Variables esperadas:
+ * - $progreso : array con cursos (código, nombre, créditos, estado)
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
 
 ?>
 <!DOCTYPE html>

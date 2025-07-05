@@ -1,5 +1,11 @@
 <?php
-// estudiante/controllers/PerfilController.php
+/*
+ * Controlador para gestión del perfil del usuario estudiante.
+ * Permite visualizar y actualizar correo y teléfono del usuario autenticado,
+ * validando datos y mostrando mensajes de error o éxito.
+ * Autor: Sistema Académico
+ * Año: 2025
+ */
 
 require_once __DIR__ . '/../models/UsuarioModel.php';
 

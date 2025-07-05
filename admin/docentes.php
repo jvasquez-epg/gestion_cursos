@@ -1,4 +1,18 @@
 <?php
+/*
+ * admin/docentes.php
+ * Punto de entrada para la gestión de docentes.
+ * Acciones permitidas:
+ *   - index:   Listar docentes.
+ *   - create:  Mostrar formulario de alta de docente.
+ *   - edit:    Editar datos de un docente existente.
+ *   - store:   Guardar datos (alta/edición) enviados por POST.
+ *   - delete:  Eliminar docente por ID.
+ * Solo accesible para administradores.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../config/conexion.php'; // ← Asegura que se incluya la conexión PDO
 require_once __DIR__ . '/controllers/DocenteController.php';

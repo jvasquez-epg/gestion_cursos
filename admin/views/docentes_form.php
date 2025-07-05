@@ -1,4 +1,18 @@
 <?php
+/**
+ * Vista de formulario para registrar o editar un docente.
+ * Permite ingresar nombres, apellidos, DNI y tipo de contrato.
+ * Variables requeridas:
+ *   $title      — Título del formulario
+ *   $formAction — Acción del formulario (ruta POST)
+ *   $docente    — (opcional) Datos del docente para edición
+ * 
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+
+ 
 if (session_status() === PHP_SESSION_NONE) session_start();
 ?>
 <!DOCTYPE html>

@@ -1,5 +1,12 @@
 <?php
-// estudiante/controllers/MallaController.php
+/*
+ * Controlador para la visualización de la malla curricular del estudiante.
+ * Verifica sesión de estudiante, obtiene la malla asignada y los cursos agrupados por ciclo,
+ * luego carga la vista correspondiente para mostrar dicha información.
+ * Autor: Sistema Académico
+ * Versión: 2.0
+ * Año: 2025
+ */
 declare(strict_types=1);
 
 require_once __DIR__ . '/../../config/config.php';

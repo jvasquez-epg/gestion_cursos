@@ -1,5 +1,19 @@
 <?php
-// admin/periodos.php
+/*
+ * admin/periodos.php
+ * Punto de entrada para la gestión de periodos académicos.
+ * Acciones permitidas:
+ *   - index:      Listar periodos y mostrar dashboard.
+ *   - create:     Formulario de nuevo periodo.
+ *   - store:      Guardar un periodo nuevo (POST).
+ *   - edit:       Formulario de edición de periodo.
+ *   - update:     Guardar cambios en periodo (POST).
+ *   - delete:     Eliminar un periodo por ID.
+ *   - resolucion: Generar PDF de resolución final del periodo.
+ *   - export:     Exportar datos asociados al periodo.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../config/conexion.php';

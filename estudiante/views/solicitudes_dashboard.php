@@ -1,8 +1,23 @@
 <?php
-// estudiante/views/solicitudes_dashboard.php
-// Variables recibidas:
-//   $periodo, $solicitudesActuales, $puedeEliminar,
-//   $puedeDescargarZip, $historial
+/*
+ * Vista: estudiante/views/solicitudes_dashboard.php
+ *
+ * Muestra las solicitudes actuales y el historial por periodo del estudiante:
+ * - Tabla con solicitudes activas (ver y eliminar)
+ * - Tabla con historial por periodo (ZIP y resolución)
+ * - Soporte visual responsivo, botones estilizados y validaciones con SweetAlert2
+ *
+ * Variables esperadas:
+ * - $periodo             : array con datos del periodo actual
+ * - $solicitudesActuales : array con solicitudes del periodo actual
+ * - $puedeEliminar       : bool que indica si se puede eliminar una solicitud
+ * - $puedeDescargarZip   : bool (no usado directamente en esta vista)
+ * - $historial           : array con resumen de solicitudes por periodo
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

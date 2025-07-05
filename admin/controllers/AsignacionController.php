@@ -1,4 +1,15 @@
 <?php
+/**
+ * Controlador para la gestión de asignaciones de docentes a cursos.
+ * Implementa las operaciones de listado, detalle, creación, actualización y eliminación de asignaciones,
+ * utilizando el modelo AsignacionModel y PeriodoModel bajo el patrón MVC.
+ * Acceso restringido a usuarios con rol administrativo.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+ 
 // admin/controllers/AsignacionController.php
 
 require_once __DIR__ . '/../models/AsignacionModel.php';

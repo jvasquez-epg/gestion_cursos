@@ -1,12 +1,19 @@
 <?php
-// admin/views/usuarios_form.php
-// Variables esperadas en este view:
-//   $usuario         (array|null)  → datos del usuario al editar
-//   $rol             (string)      → 'administrador'|'administrativo'|'estudiante'
-//   $errores         (array)       → lista de strings con errores de validación
-//   $permisos        (array)       → lista de todos los permisos ['id'=>..,'nombre'=>..]
-//   $usuarioPermisos (array)       → lista de IDs de permisos asignados a este usuario
-//   $BASE_URL        (string)
+/*
+ * admin/views/usuarios_form.php
+ * Vista para crear o editar usuarios del sistema.
+ * Variables esperadas:
+ *   $usuario         — Datos del usuario (array|null)
+ *   $rol             — Rol del usuario ('administrador', 'administrativo', 'estudiante')
+ *   $errores         — Errores de validación (array)
+ *   $permisos        — Lista de permisos disponibles (array)
+ *   $usuarioPermisos — IDs de permisos asignados (array)
+ *   $BASE_URL        — Ruta base del sistema (string)
+ * Incluye validación de datos, token CSRF, campos según rol y estilos personalizados.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
 
 $isEdit = isset($usuario) && isset($usuario['id']);
 $rolCapital = ucfirst($rol);

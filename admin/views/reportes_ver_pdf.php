@@ -1,6 +1,16 @@
 <?php
-// admin/views/reportes_ver_pdf.php
-// Variables esperadas: $pdfUrl, $titulo
+/*
+ * admin/views/reportes_ver_pdf.php
+ * Vista para mostrar un PDF embebido en el sistema de reportes.
+ * Variables esperadas:
+ *   $pdfUrl  — URL absoluta o relativa del archivo PDF a visualizar
+ *   $titulo  — Título descriptivo del documento
+ * Incluye botón de regreso, encabezado y visor incrustado.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

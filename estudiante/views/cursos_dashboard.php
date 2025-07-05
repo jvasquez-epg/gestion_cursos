@@ -1,3 +1,17 @@
+<!--
+  Vista: cursos.php (Dashboard de cursos disponibles)
+
+  Muestra los cursos que el estudiante puede solicitar según su progreso académico.
+  Incluye:
+  - Resumen del periodo actual, créditos y cursos disponibles/restantes.
+  - Filtro de búsqueda por código o nombre del curso.
+  - Selección individual y múltiple con límites controlados (cursos y créditos).
+  - Confirmaciones con SweetAlert y solicitudes vía AJAX.
+  - Diseño adaptativo con cards dinámicos, elementos flotantes y feedback visual.
+
+  Autor: ASI-GRUPO 5
+  Año: 2025
+-->
 <!DOCTYPE html>
 <html lang="es">
 

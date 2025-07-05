@@ -1,3 +1,24 @@
+# ------------------------------------------------------------------------------
+# Módulo de autenticación con Selenium para el sistema académico
+#
+# Autor: ASI-GRUPO 5
+# Año: 2025
+#
+# Este módulo automatiza el proceso de inicio de sesión en el sistema
+# académico institucional usando Selenium WebDriver en modo headless.
+#
+# Características:
+# - Carga la página de login del INTRANET_URL definido en settings.
+# - Espera el DOM mínimo para interactuar con los campos de ingreso.
+# - Llena el código y contraseña del estudiante en el formulario.
+# - Detecta y elimina el modal de anuncio si aparece.
+# - Realiza el clic en el botón de acceso.
+# - Espera la carga del menú lateral como confirmación de login.
+# - Devuelve el driver ya autenticado si es exitoso, o `None` si falla.
+#
+# Requiere: webdriver-manager, selenium, configuración previa en settings.py.
+# ------------------------------------------------------------------------------
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service

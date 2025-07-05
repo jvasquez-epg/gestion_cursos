@@ -1,4 +1,18 @@
 <?php
+/*
+ * Clase DocumentGenerator
+ * 
+ * Genera un documento PDF a partir de una plantilla DOCX, 
+ * inserta un código QR con información codificada y convierte
+ * el archivo final a PDF para su descarga o almacenamiento.
+ * 
+ * Usa PhpWord para manipulación de DOCX y DomPDF para PDF.
+ * Código QR generado con chillerlan\QRCode.
+ * 
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
 declare(strict_types=1);
 
 require_once __DIR__.'/../../vendor/autoload.php';

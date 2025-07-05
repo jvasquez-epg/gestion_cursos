@@ -1,5 +1,16 @@
 <?php
-// admin/asignaciones.php
+/*
+ * admin/asignaciones.php
+ * Punto de entrada para la gestión de asignación de docentes a cursos.
+ * Controla las siguientes acciones:
+ *   - index:   Muestra la vista principal con cursos para asignación.
+ *   - detalle: Retorna el detalle AJAX para asignar/editar docente (modal).
+ *   - store:   Procesa alta o edición de una asignación.
+ *   - delete:  Elimina la asignación docente-curso.
+ * Incluye seguridad de sesión y redirecciones apropiadas.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../config/conexion.php';

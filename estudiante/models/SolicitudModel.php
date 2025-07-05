@@ -1,13 +1,19 @@
 <?php
-// estudiante/models/SolicitudModel.php
+/*
+ * Modelo SolicitudModel para gestionar las solicitudes de cursos
+ * realizadas por los estudiantes, incluyendo:
+ * - Consulta de solicitudes por estudiante y periodo
+ * - Obtención y gestión de documentos PDF asociados
+ * - Resumen histórico por periodos
+ * - Creación y eliminación de solicitudes con validaciones
+ * - Generación de PDF firmado con código QR para cada solicitud
+ * - Descarga de archivos PDF y ZIP de solicitudes
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 declare(strict_types=1);
 
-/**
- * Gestiona solicitudes del estudiante:
- *   – CRUD de solicitudes
- *   – Resumen por periodo
- *   – Descarga de PDFs y ZIP
- */
 class SolicitudModel
 {
     private PDO $pdo;

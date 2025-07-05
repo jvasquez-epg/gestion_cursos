@@ -1,3 +1,30 @@
+# ------------------------------------------------------------------------------
+# Script principal de scraping académico para estudiantes
+#
+# Autor: José Vásquez Zevallos
+# Año: 2025
+#
+# Este script automatiza el ingreso al sistema académico de la universidad
+# para extraer la información personal del estudiante, la malla curricular
+# correspondiente y su progreso académico. 
+#
+# Características:
+# - Inicia sesión en el sistema con código y contraseña.
+# - Obtiene el perfil del estudiante y valida que pertenezca a la escuela
+#   de Ingeniería de Sistemas e Informática.
+# - Extrae la malla curricular completa del estudiante.
+# - Extrae los cursos cursados y su estado (cumplido o pendiente).
+# - Detecta y agrega cursos electivos pendientes según reglas definidas.
+# - Elimina electivos pendientes de ciclos ya cumplidos.
+# - Devuelve un JSON con los datos consolidados.
+#
+# Requiere módulos internos para:
+# - login (autenticación con Selenium)
+# - perfil (datos personales)
+# - malla (estructura curricular)
+# - progreso (situación académica)
+# ------------------------------------------------------------------------------ 
+
 import sys
 import json
 import io

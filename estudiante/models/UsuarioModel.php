@@ -1,5 +1,12 @@
 <?php
-// estudiante/models/UsuarioModel.php
+/*
+ * Modelo UsuarioModel para gestionar datos de usuarios,
+ * incluyendo consulta por ID, actualización de correo,
+ * teléfono y contraseña.
+ * 
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 
 class UsuarioModel {
     private PDO $pdo;

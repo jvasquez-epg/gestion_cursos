@@ -1,5 +1,16 @@
 <?php
-// components/sidebar.php
+/*
+ * components/sidebar.php
+ * Menú lateral de navegación contextual según el rol de usuario en sesión.
+ * Características:
+ *   - Resalta el enlace activo según la URL.
+ *   - Soporte para submenús desplegables (ejemplo: gestión de solicitudes en estudiante).
+ *   - Muestra el rol del usuario en encabezado y footer.
+ *   - Incluye estilos personalizados y accesibilidad.
+ * Uso: Se incluye en todas las vistas protegidas del sistema.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }

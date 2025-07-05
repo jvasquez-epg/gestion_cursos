@@ -1,6 +1,18 @@
 <?php
-// estudiante/controllers/SolicitudesController.php
-declare(strict_types=1);
+/*
+ * Controlador para gestionar solicitudes de cursos por estudiantes.
+ * Funciones principales:
+ *   - dashboard(): muestra solicitudes activas y el historial resumido.
+ *   - ver(): vista previa embebida del documento PDF de la solicitud.
+ *   - eliminar(): elimina una solicitud dentro del rango permitido.
+ *   - descargarZip(): descarga un archivo ZIP con las solicitudes del periodo.
+ *   - descargarResolucion(): descarga la resolución PDF de un periodo cerrado.
+ * Validaciones:
+ *   - Controla acceso solo para estudiantes mediante sesión.
+ *   - Controla que la eliminación solo ocurra en periodo de envíos habilitados.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */declare(strict_types=1);
 
 require_once __DIR__ . '/../../config/config.php';
 require_once __DIR__ . '/../../config/conexion.php';

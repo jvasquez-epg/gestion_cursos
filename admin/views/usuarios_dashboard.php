@@ -1,6 +1,14 @@
 <?php
-// admin/views/usuarios_dashboard.php
-// Variables: $cuentas (array: conteo por rol), $BASE_URL
+/*
+ * admin/views/usuarios_dashboard.php
+ * Vista de dashboard para gestión de usuarios.
+ * Variables esperadas:
+ *   $cuentas   — Conteo de usuarios por rol (array)
+ *   $BASE_URL  — Ruta base del sistema
+ * Muestra tarjetas resumen para administradores y estudiantes, con botones de acceso a gestión/listado.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

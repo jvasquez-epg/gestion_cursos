@@ -1,5 +1,17 @@
 <?php
-// components/header_user.php
+/*
+ * components/header_user.php
+ * Encabezado superior derecho con información del usuario en sesión.
+ * Elementos mostrados:
+ *   - Nombre de usuario autenticado
+ *   - Menú de perfil con acceso a edición de perfil y cierre de sesión
+ * Características:
+ *   - Dropdown interactivo para el usuario
+ *   - Confirmación de logout con SweetAlert2
+ * Uso: Se incluye en todas las vistas que requieran sesión activa.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 ?>
 <header class="header-user">
   <div class="user-info">

@@ -1,3 +1,22 @@
+<?php
+/*
+ * Vista: estudiante/views/perfil.php
+ *
+ * Muestra y permite actualizar los datos del perfil del estudiante.
+ * Incluye:
+ * - Datos personales: nombres, apellidos, DNI (solo lectura)
+ * - Formulario para editar correo y teléfono
+ * - Validación con HTML5 y SweetAlert
+ * - Enlace para cambiar contraseña
+ *
+ * Variables esperadas:
+ * - $usuario : array con datos del estudiante autenticado
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

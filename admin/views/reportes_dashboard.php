@@ -1,6 +1,18 @@
 <?php
-// admin/views/reportes_dashboard.php
-// Variables recibidas: $periodos, $periodoId, $datos
+
+/*
+ * admin/views/reportes_dashboard.php
+ * Vista de dashboard de reportes por periodo académico.
+ * Variables esperadas:
+ *   $periodos   — Lista de periodos disponibles (array)
+ *   $periodoId  — ID del periodo seleccionado (int)
+ *   $datos      — Listado de reportes y resoluciones con URL de ver/descargar y estado de datos (array)
+ * Incluye filtro de periodo, tarjetas de acceso a reportes, botones de acción y leyenda de tipos.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

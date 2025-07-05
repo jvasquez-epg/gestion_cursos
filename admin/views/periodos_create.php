@@ -1,4 +1,17 @@
 <?php
+
+/*
+ * Vista para creación y edición de periodos académicos.
+ * Variables esperadas:
+ *   $periodData  — Datos del periodo (array vacío si es nuevo)
+ *   $formAction  — URL parcial para submit del formulario
+ *   $buttonLabel — Etiqueta para el botón de acción ("Crear" o "Actualizar")
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+
+ 
 // admin/views/periodos_create.php
 // Variables esperadas:
 //   $periodData  (array)   — datos del periodo a editar (vacío en creación)

@@ -1,3 +1,23 @@
+# ------------------------------------------------------------------------------
+# Módulo de scraping para extraer datos del perfil del estudiante
+#
+# Autor: ASI-GRUPO 5
+# Año: 2025
+#
+# Este script navega al perfil del estudiante dentro del sistema académico
+# institucional, accede al formulario y extrae información relevante como:
+# - Apellidos y nombres
+# - DNI (visible en una tarjeta de perfil)
+# - Escuela profesional
+#
+# Características:
+# - Utiliza expresiones XPath para ubicar campos específicos
+# - Procesa el nombre completo dividiéndolo en partes para separar nombres y apellidos
+# - Usa WebDriverWait para asegurar que los elementos estén presentes antes de leer
+#
+# Devuelve: diccionario con los datos o `None` si ocurre un error
+# ------------------------------------------------------------------------------
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC

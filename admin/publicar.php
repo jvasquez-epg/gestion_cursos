@@ -1,5 +1,18 @@
 <?php
-// admin/publicar.php
+/*
+ * admin/publicar.php
+ * Punto de entrada para el módulo de publicación de cursos en periodo activo.
+ * Variables y modelos involucrados:
+ *   - PeriodoModel   → para obtener periodo activo y fechas de fase de asignación.
+ *   - AsignacionModel→ para listar cursos asignados, sin docente e insuficientes.
+ * Flujo:
+ *   - Solo accesible para roles administrador y administrativo.
+ *   - Muestra resumen tabulado de cursos según estado de asignación.
+ *   - Acceso a la fase de asignación y navegación de regreso.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
 
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../config/conexion.php';

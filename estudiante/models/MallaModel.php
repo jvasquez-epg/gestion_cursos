@@ -1,5 +1,13 @@
 <?php
-// estudiante/models/MallaModel.php
+/*
+ * Modelo MallaModel para obtener cursos agrupados por ciclo
+ * con prerrequisitos para una malla curricular dada.
+ * El curso "PRACTICA PREPROFESIONAL" tiene requisito especial.
+ * 
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
 declare(strict_types=1);
 
 class MallaModel

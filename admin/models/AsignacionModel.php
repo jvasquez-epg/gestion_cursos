@@ -1,4 +1,14 @@
 <?php
+/**
+ * Modelo de Asignaciones.
+ * Permite la gestión de la relación entre cursos y docentes asignados en cada periodo académico,
+ * contemplando operaciones de consulta, registro, actualización y eliminación de asignaciones.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+ 
 // admin/models/AsignacionModel.php
 
 class AsignacionModel {

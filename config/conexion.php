@@ -1,9 +1,15 @@
 <?php
-// config/conexion.php
-// -------------------------------------------------------
-// Devuelve una única instancia PDO mediante conectar()
-// -------------------------------------------------------
-
+/*
+ * config/conexion.php
+ * Devuelve una única instancia PDO para toda la aplicación.
+ * Características:
+ *   - Función conectar(): conexión persistente y reutilizable.
+ *   - Configura opciones seguras para el entorno MySQL (charset utf8mb4, manejo de errores).
+ *   - Define $pdo global para compatibilidad retroactiva.
+ * Uso: Incluir en cualquier archivo que requiera acceso a la base de datos.
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 require_once __DIR__ . '/config.php'; // solo para BASE_URL u otras constantes
 
 function conectar(): PDO

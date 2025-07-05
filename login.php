@@ -1,4 +1,14 @@
 <?php
+/**
+ * Script de inicio de sesión para el sistema académico.
+ * Valida credenciales de usuario, establece la sesión y redirige
+ * según el rol (estudiante, administrador, administrativo).
+ * Integra verificación segura de contraseñas y gestión de errores.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
 session_start();
 
 require_once __DIR__ . '/config/config.php';

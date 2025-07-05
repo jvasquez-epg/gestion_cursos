@@ -1,4 +1,16 @@
 <?php
+/**
+ * Modelo de generación y consulta de reportes académicos.
+ * Permite la obtención y verificación de datos relevantes para la emisión
+ * de actas, resoluciones, catálogos y reportes históricos del sistema.
+ * Garantiza la integridad y coherencia de la información reportada,
+ * conforme a los lineamientos académicos y administrativos vigentes.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
+ 
 // admin/models/ReportesModel.php
 
 class ReportesModel

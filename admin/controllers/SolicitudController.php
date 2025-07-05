@@ -1,4 +1,13 @@
 <?php
+/**
+ * Controlador de Solicitudes del sistema de gestión académica.
+ * Permite la visualización de resúmenes y detalles de solicitudes por curso
+ * durante el periodo académico activo, integrando datos relevantes para la gestión administrativa.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
 // admin/controllers/SolicitudController.php
 
 require_once __DIR__ . '/../models/SolicitudModel.php';

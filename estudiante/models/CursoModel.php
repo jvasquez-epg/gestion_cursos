@@ -1,5 +1,15 @@
 <?php
-// estudiante/models/CursoModel.php
+/*
+ * Modelo para obtener cursos disponibles para un estudiante en un periodo académico.
+ * Filtra cursos pendientes cuyo prerrequisitos están cumplidos,
+ * aplica filtro por paridad de ciclo (par/impar/todos),
+ * y excluye cursos ya solicitados en el periodo actual.
+ * La práctica preprofesional (código 131B10081) solo aparece
+ * si el estudiante tiene al menos 180 créditos aprobados.
+ * 
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 declare(strict_types=1);
 
 /**

@@ -1,5 +1,16 @@
 <?php
-// models/ProgresoModel.php
+/*
+ * Modelo ProgresoModel para obtener el estado académico
+ * de los cursos de un estudiante.
+ *
+ * Método principal:
+ * - obtenerPorEstudiante(int $estudianteId): array
+ *   Retorna listado de cursos con código, nombre, créditos y estado
+ *   ordenado por ciclo y código.
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
 
 class ProgresoModel {
     private $pdo;

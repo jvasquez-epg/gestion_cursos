@@ -1,6 +1,24 @@
 <?php
-// estudiante/views/malla_dashboard.php
-// Variable disponible: $ciclos  (array ciclo => lista de cursos)
+/*
+ * Vista: estudiante/views/malla_dashboard.php
+ *
+ * Muestra al estudiante la malla curricular organizada por ciclos.
+ * Incluye:
+ * - Código del curso
+ * - Nombre de la asignatura
+ * - Créditos
+ * - Prerrequisitos (si existen)
+ *
+ * Diseño responsive con estilos comunes del sistema.
+ * Compatible con navegación móvil.
+ *
+ * Variables esperadas:
+ * - $ciclos : array asociativo [ ciclo => cursos[] ]
+ *
+ * Autor: ASI-GRUPO 5
+ * Año: 2025
+ */
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
